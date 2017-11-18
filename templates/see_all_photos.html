@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<div align="center">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>See all photos of all users</title>
+</head>
+<body>
+
+{% if albums %}
+<h2> Here are all the Albums ! </h2>
+    <h5><i>Click each link for photographs</i></h5>
+
+
+    {% for album in albums %}
+       <h3> <li><a href="{{url_for('showallPhotos',values=album[0])}}">{{album[1]}}</a></li></h3>
+    {% endfor %}
+
+{% else %}
+
+
+{% endif %}
+
+
+{% if photos %}
+<h2>Here are the photos!</h2>
+
+    {% for photo in photos %}
+    	<h3>{{photo[2]}}</h3>
+        <img  src='data:image/png;base64, {{photo[0]}}' />
+        <form method="post" action="{{url_for('like_photos', p_id = photo[1])}}">
+        	<input type="submit" value="Like" />
+        </form>
+        <form method="post" action="{{url_for('show_users_likes', values = photo[1])}}">
+        	<input type="submit" value="Show People who liked and total likes" />
+        </form>
+        <form method="post" action="{{url_for('add_comment', picture_id = photo[1])}}">
+        	<label for="comment">Comment:</label>
+            <input type="text" name="comment" />
+        	<input type="submit" value="Post Comment" />
+        </form>
+        <form method="post" action="{{url_for('show_comments', picture_id = photo[1])}}">
+        	<input type="submit" value="Show Comments" />
+        </form><br>
+    {% endfor %}
+    <br>
+        <br>
+    <a href='/see_all_photos'> Back</a>
+
+{% endif %}
+
+<br>
+<br>
+<a href='/hello'>Home</a>
+</body>
+</html>
+</div>

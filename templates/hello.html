@@ -1,0 +1,29 @@
+<!doctype html>
+<div align="center">
+<link href="https://fonts.googleapis.com/css?family=Amaranth" rel="stylesheet">
+{% if message %}
+  <h4 style="font-family: 'Amaranth', sans-serif; font-size: 30px">{{message}}!</h4>
+{% endif %}
+<title>Photoshare</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% endif %}
+{% if error_message %}
+  <h3 style="color:#FF0000;"><i>{{error_message}}!</i></h3>
+{% endif %}
+
+
+
+{% if message is none %}
+  <p>You should <a href='/login'>login!</a></p>
+{% else %}
+  <p> Go to <a href='/profile'>profile?</a></p>
+{% endif %}
+<h4><a href = '/top_10_users'> See top 10 users</a></h4>
+<h4>See <a href='/see_all_photos'> all photos</a>!</h4>
+<h4>See <a href='/search_allPhotos_by_tags'>all photos</a> of every user by tags</h4>
+<h4>See <a href='/by_Popular_tags'>all photos</a> by POPULAR tags</h4>
+<h4><a href='/search_photo_by_tag'>Search</a> a photo by Tag</h4><br><br>
+
+<h4><a href='/'>HomePage</a></h4>
+</div>
